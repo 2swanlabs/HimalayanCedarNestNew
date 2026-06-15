@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himalayan Cedar Nest — Deohari Village · Sainj Valley</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root{
+  --white:#ffffff;
+  --off:#faf9f7;
+  --stone:#f0ede8;
+  --border:#e8e4de;
+  --ink:#1c1a17;
+  --body:#4a4640;
+  --muted:#9a9590;
+  --cedar:#8b5c2a;
+  --cedar-lt:#b87d44;
+  --cedar-pale:#f7f0e8;
+  --pine:#1f3422;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter','Helvetica Neue',sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --radius:2px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:var(--sans);cursor:pointer;border:none;background:none}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}
+.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.32s}
+
+/* ─── NAV ─── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3.5rem;height:80px;
+  transition:background .45s,height .3s,box-shadow .4s,border-bottom .4s;
+}
+#nav.scrolled{
+  background:var(--white);height:64px;
+  box-shadow:0 1px 0 var(--border);
+}
+/* Logo */
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-mark{
+  width:32px;height:38px;color:rgba(255,255,255,.9);
+  transition:color .4s;flex-shrink:0;
+}
+#nav.scrolled .logo-mark{color:var(--pine)}
+.logo-text{display:flex;flex-direction:column;gap:3px}
+.logo-name{
+  font-family:var(--sans);font-size:.72rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.95);
+  transition:color .4s;line-height:1;
+}
+.logo-sub{
+  font-family:var(--sans);font-size:.58rem;font-weight:300;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);
+  transition:color .4s;
+}
+#nav.scrolled .logo-name{color:var(--ink)}
+#nav.scrolled .logo-sub{color:var(--muted)}
+/* Links */
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{
+  font-family:var(--sans);font-size:.72rem;font-weight:400;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.8);transition:color .3s;
+}
+#nav.scrolled .nav-links a{color:var(--body)}
+.nav-links a:hover{color:var(--cedar-lt)}
+.nav-book-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.6rem 1.4rem;
+  background:var(--cedar);
+  font-family:var(--sans);font-size:.68rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  transition:background .3s;flex-shrink:0;white-space:nowrap;
+  border-radius:var(--radius);
+}
+.nav-book-btn:hover{background:#6b4620}
+/* Burger */
+.burger{
+  display:none;flex-direction:column;gap:5px;
+  padding:8px;z-index:901;background:none;border:none;cursor:pointer;
+}
+.burger span{
+  display:block;width:22px;height:1.5px;background:#fff;
+  transition:transform .35s var(--ease),opacity .25s,background .4s;
+  transform-origin:center;
+}
+#nav.scrolled .burger span{background:var(--ink)}
+.burger.open span{background:#fff!important}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* Drawer */
+.drawer{
+  position:fixed;inset:0;z-index:800;
+  background:var(--pine);
+  padding:5.5rem 2.5rem 3rem;
+  display:flex;flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .42s var(--ease);
+  overflow-y:auto;
+}
+.drawer.open{transform:none}
+.drawer nav a{
+  font-family:var(--serif);font-size:1.6rem;font-weight:300;font-style:italic;
+  color:rgba(255,255,255,.88);padding:.8rem 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:block;transition:color .3s;
+}
+.drawer nav a:hover{color:var(--cedar-lt)}
+.drawer-cta{
+  margin-top:2.5rem;padding:1rem 1.8rem;
+  background:var(--cedar);color:#fff;
+  font-family:var(--sans);font-size:.75rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  border-radius:var(--radius);
+}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;height:100svh;min-height:660px;
+  display:flex;align-items:flex-end;overflow:hidden;
+}
+.hero-video{
+  position:absolute;inset:0;
+}
+.hero-video video{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+}
+.hero-scrim{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top, rgba(15,10,6,.82) 0%, rgba(15,10,6,.28) 55%, rgba(15,10,6,.08) 100%),
+    linear-gradient(100deg, rgba(15,10,6,.4) 0%, transparent 60%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 5rem 6.5rem;
+  max-width:860px;
+}
+.hero-label{
+  display:inline-flex;align-items:center;gap:.9rem;
+  margin-bottom:2rem;
+  opacity:0;animation:fadeIn 1s ease forwards .4s;
+}
+.hero-label-line{width:28px;height:1px;background:var(--cedar-lt)}
+.hero-label-text{
+  font-family:var(--sans);font-size:.65rem;font-weight:400;
+  letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.6);
+}
+.hero-h1{
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(3rem,6vw,7rem);line-height:1.02;
+  color:#fff;margin-bottom:1.4rem;
+  opacity:0;animation:fadeUp 1.4s ease forwards .8s;
+}
+.hero-sub{
+  font-family:var(--sans);font-size:.8rem;font-weight:300;
+  color:rgba(255,255,255,.5);margin-bottom:2.8rem;letter-spacing:.04em;
+  opacity:0;animation:fadeIn .9s ease forwards 1.6s;
+}
+.hero-actions{
+  display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;
+  opacity:0;animation:fadeIn .9s ease forwards 2s;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.85rem 2rem;background:var(--cedar);
+  font-family:var(--sans);font-size:.72rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  transition:background .3s,transform .2s;border-radius:var(--radius);
+}
+.btn-primary:hover{background:#6b4620;transform:translateY(-1px)}
+.btn-primary svg{width:15px;height:15px}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:.85rem 2rem;
+  border:1px solid rgba(255,255,255,.3);
+  font-family:var(--sans);font-size:.72rem;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);
+  transition:border-color .3s,color .3s;border-radius:var(--radius);
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.65);color:#fff}
+/* Scroll indicator */
+.hero-scroll{
+  position:absolute;bottom:2.5rem;right:4rem;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  opacity:0;animation:fadeIn 1s ease forwards 2.5s;
+}
+.hero-scroll-track{width:1px;height:48px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+.hero-scroll-track::after{
+  content:'';position:absolute;top:-100%;left:0;
+  width:1px;height:100%;background:rgba(255,255,255,.7);
+  animation:pulse 2s ease infinite 3s;
+}
+.hero-scroll-lbl{
+  font-family:var(--sans);font-size:.5rem;font-weight:400;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);writing-mode:vertical-rl;
+}
+/* Stat pods */
+.hero-stats{
+  position:absolute;bottom:6rem;right:4rem;z-index:2;
+  display:flex;flex-direction:column;gap:.6rem;
+  opacity:0;animation:fadeIn 1s ease forwards 2.2s;
+}
+.hero-stat-pod{
+  display:flex;align-items:center;gap:.8rem;
+  background:rgba(255,255,255,.08);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.1);
+  padding:.6rem 1rem;border-radius:40px;
+}
+.hero-stat-num{
+  font-family:var(--serif);font-size:1.1rem;font-weight:400;
+  color:#fff;line-height:1;
+}
+.hero-stat-lbl{
+  font-family:var(--sans);font-size:.56rem;font-weight:300;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);
+}
+
+/* ─── TICKER ─── */
+.ticker{
+  background:var(--stone);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:.8rem 0;overflow:hidden;
+}
+.ticker-track{
+  display:flex;gap:2.5rem;white-space:nowrap;
+  animation:ticker 38s linear infinite;
+}
+.ticker-item{
+  display:inline-flex;align-items:center;gap:2.5rem;flex-shrink:0;
+  font-family:var(--sans);font-size:.65rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.ticker-sep{width:3px;height:3px;border-radius:50%;background:var(--cedar-lt);flex-shrink:0}
+
+/* ─── INTRO STRIP ─── */
+.intro{
+  padding:7rem 5rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:center;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.intro-left{}
+.intro-eyebrow{
+  display:inline-flex;align-items:center;gap:.75rem;
+  margin-bottom:2rem;
+}
+.intro-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--cedar)}
+.intro-eyebrow span{
+  font-family:var(--sans);font-size:.65rem;font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--cedar);
+}
+.intro-heading{
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(2rem,3.2vw,3.4rem);line-height:1.2;
+  color:var(--ink);margin-bottom:1.8rem;
+}
+.intro-body{
+  font-family:var(--sans);font-size:.88rem;font-weight:300;
+  line-height:1.95;color:var(--body);
+}
+.intro-right{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+}
+.intro-img-tall{grid-row:span 2;border-radius:4px;overflow:hidden}
+.intro-img-tall img,.intro-img-sq img{width:100%;height:100%;object-fit:cover}
+.intro-img-sq{border-radius:4px;overflow:hidden;height:200px}
+.intro-img-sq:last-child{margin-top:0}
+/* Stats row */
+.stat-row{
+  display:flex;gap:0;margin-top:3rem;
+  border-top:1px solid var(--border);padding-top:2rem;
+}
+.stat-item{flex:1;padding-right:2rem}
+.stat-item:not(:last-child){border-right:1px solid var(--border);margin-right:2rem}
+.stat-num{
+  font-family:var(--serif);font-size:2.2rem;font-weight:300;
+  color:var(--ink);line-height:1;margin-bottom:.35rem;
+}
+.stat-lbl{
+  font-family:var(--sans);font-size:.65rem;font-weight:400;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ─── SECTION LABEL (shared) ─── */
+.sec-eyebrow{
+  display:inline-flex;align-items:center;gap:.75rem;
+  margin-bottom:1.2rem;
+}
+.sec-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--cedar)}
+.sec-eyebrow span{
+  font-family:var(--sans);font-size:.65rem;font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--cedar);
+}
+.sec-eyebrow.lt::before{background:var(--cedar-lt)}
+.sec-eyebrow.lt span{color:var(--cedar-lt)}
+.sec-h2{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.8rem,2.8vw,3.2rem);line-height:1.12;color:var(--ink);
+}
+.sec-h2 em{font-style:italic}
+.sec-h2.lt{color:#fff}
+.sec-body{
+  font-family:var(--sans);font-size:.88rem;font-weight:300;
+  line-height:1.9;color:var(--body);
+}
+.sec-body.lt{color:rgba(255,255,255,.6)}
+.link-arrow{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--sans);font-size:.7rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--cedar);
+  transition:gap .3s;
+}
+.link-arrow::after{content:'→';font-size:.9rem;transition:transform .3s}
+.link-arrow:hover{gap:1rem}
+.link-arrow:hover::after{transform:translateX(2px)}
+.link-arrow.lt{color:var(--cedar-lt)}
+
+/* ─── AMENITIES ─── */
+.amenities{background:var(--off);padding:6rem 5rem;border-bottom:1px solid var(--border)}
+.amenities-inner{max-width:1280px;margin:0 auto}
+.amenities-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:3rem;margin-bottom:4rem;flex-wrap:wrap;
+}
+.amenities-sub-text{
+  font-family:var(--sans);font-size:.85rem;font-weight:300;
+  color:var(--body);max-width:340px;line-height:1.85;text-align:right;
+}
+.amenities-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+}
+.amenity{
+  background:var(--white);padding:2rem 1.8rem;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:.8rem;
+  transition:background .3s;
+}
+.amenity:hover{background:var(--cedar-pale)}
+.amenity-ico{
+  width:36px;height:36px;color:var(--cedar);
+  display:flex;align-items:center;justify-content:center;
+}
+.amenity-ico svg{width:100%;height:100%}
+.amenity-name{
+  font-family:var(--sans);font-size:.78rem;font-weight:500;
+  letter-spacing:.04em;color:var(--ink);
+}
+.amenity-note{
+  font-family:var(--sans);font-size:.74rem;font-weight:300;
+  color:var(--muted);line-height:1.65;
+}
+
+/* ─── CABINS ─── */
+.cabins{padding:7rem 5rem;background:var(--white);border-bottom:1px solid var(--border)}
+.cabins-inner{max-width:1280px;margin:0 auto}
+.cabins-head{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  margin-bottom:4rem;align-items:end;
+}
+.cabins-head-right{display:flex;flex-direction:column;gap:1.2rem;justify-content:flex-end}
+.cabins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cabin-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  border-radius:4px;
+}
+.cabin-card img{
+  width:100%;height:460px;object-fit:cover;
+  transition:transform 1.4s var(--ease),filter .5s;
+  display:block;
+}
+.cabin-card:hover img{transform:scale(1.06);filter:brightness(.88)}
+.cabin-info{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(12,8,4,.9) 0%,rgba(12,8,4,.1) 70%,transparent 100%);
+  padding:2rem 1.8rem;
+}
+.cabin-num{
+  font-family:var(--serif);font-size:3.5rem;font-weight:300;
+  color:rgba(255,255,255,.07);line-height:1;margin-bottom:auto;
+}
+.cabin-cat{
+  font-family:var(--sans);font-size:.6rem;font-weight:400;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--cedar-lt);
+  margin-bottom:.4rem;
+}
+.cabin-name{
+  font-family:var(--serif);font-size:1.4rem;font-weight:300;
+  font-style:italic;color:#fff;line-height:1.15;margin-bottom:.9rem;
+}
+.cabin-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--sans);font-size:.62rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+  opacity:0;transform:translateY(6px);
+  transition:opacity .4s,transform .4s;
+}
+.cabin-card:hover .cabin-cta{opacity:1;transform:none}
+.cabin-cta::after{content:'→'}
+
+/* ─── EXPERIENCES ─── */
+.experiences{
+  background:var(--stone);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);padding:7rem 5rem;
+}
+.experiences-inner{max-width:1280px;margin:0 auto}
+.experiences-top{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:3rem;margin-bottom:4rem;flex-wrap:wrap;
+}
+.exp-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr 1fr;
+  grid-template-rows:320px 260px;
+  gap:4px;
+}
+.exp-card{
+  position:relative;overflow:hidden;cursor:pointer;border-radius:2px;
+}
+.exp-card:first-child{grid-row:span 2}
+.exp-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease);
+  position:absolute;inset:0;
+}
+.exp-card:hover img{transform:scale(1.07)}
+.exp-scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(12,8,4,.82) 0%,transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem;
+}
+.exp-cat{
+  font-family:var(--sans);font-size:.58rem;font-weight:400;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--cedar-lt);
+  margin-bottom:.4rem;
+}
+.exp-title{
+  font-family:var(--serif);font-size:1.4rem;font-weight:300;
+  font-style:italic;color:#fff;line-height:1.15;
+}
+.exp-title-sm{
+  font-family:var(--serif);font-size:1rem;font-weight:300;
+  font-style:italic;color:#fff;
+}
+.exp-arr{
+  margin-top:.5rem;font-family:var(--sans);font-size:.6rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+  opacity:0;transform:translateY(4px);
+  transition:opacity .4s,transform .4s;
+}
+.exp-card:hover .exp-arr{opacity:1;transform:none}
+/* Mobile carousel nav */
+.exp-nav{
+  display:none;justify-content:center;align-items:center;
+  gap:1rem;padding:1.2rem 0 1.6rem;
+}
+.exp-nav-btn{
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid var(--cedar);color:var(--cedar);
+  background:transparent;font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .25s,color .25s;
+}
+.exp-nav-btn:hover{background:var(--cedar);color:#fff}
+.exp-counter{
+  font-family:var(--sans);font-size:.7rem;
+  letter-spacing:.16em;color:var(--muted);
+  min-width:38px;text-align:center;
+}
+
+/* ─── PLACES ─── */
+.places{background:var(--pine);padding:7rem 5rem}
+.places-inner{max-width:1280px;margin:0 auto}
+.places-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:3rem;margin-bottom:5rem;flex-wrap:wrap;
+}
+.places-sub-txt{
+  font-family:var(--sans);font-size:.85rem;font-weight:300;
+  color:rgba(255,255,255,.4);max-width:300px;text-align:right;line-height:1.85;
+}
+.places-list{display:flex;flex-direction:column;gap:0}
+.place-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid rgba(255,255,255,.07);min-height:480px;
+}
+.place-row:nth-child(even){direction:rtl}
+.place-row:nth-child(even)>*{direction:ltr}
+.place-photo{position:relative;overflow:hidden}
+.place-photo img{
+  width:100%;height:100%;object-fit:cover;min-height:380px;
+  transition:transform 1.4s var(--ease);
+}
+.place-row:hover .place-photo img{transform:scale(1.04)}
+.place-num{
+  position:absolute;bottom:-.05em;left:-.03em;
+  font-family:var(--serif);font-size:clamp(6rem,13vw,14rem);
+  font-weight:300;color:rgba(255,255,255,.06);
+  line-height:1;pointer-events:none;z-index:2;
+}
+.place-body{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 5rem;
+}
+.place-tag{
+  font-family:var(--sans);font-size:.62rem;font-weight:400;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--cedar-lt);
+  margin-bottom:1.2rem;
+}
+.place-name{
+  font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,3rem);
+  font-weight:300;line-height:1.1;color:#fff;margin-bottom:1.2rem;
+}
+.place-name em{font-style:italic}
+.place-desc{
+  font-family:var(--sans);font-size:.86rem;font-weight:300;
+  line-height:1.95;color:rgba(255,255,255,.5);max-width:400px;
+}
+.place-dist{
+  display:inline-flex;align-items:center;gap:.75rem;
+  margin-top:2rem;
+  font-family:var(--sans);font-size:.64rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);
+  border-top:1px solid rgba(255,255,255,.07);
+  padding-top:1.4rem;
+}
+
+/* ─── TESTIMONIAL ─── */
+.testimonial{
+  padding:7rem 5rem;background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.testimonial-inner{max-width:1280px;margin:0 auto}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.testi-photo-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  grid-template-rows:260px 200px;gap:1rem;
+}
+.testi-photo-main{grid-row:span 2;border-radius:4px;overflow:hidden}
+.testi-photo-sm{border-radius:4px;overflow:hidden}
+.testi-photo-main img,.testi-photo-sm img{width:100%;height:100%;object-fit:cover}
+/* Dots (mobile carousel) */
+.testi-dots{display:none;justify-content:center;gap:.5rem;margin-top:.8rem}
+.testi-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--border);border:none;cursor:pointer;padding:0;
+  transition:background .3s,transform .3s;
+}
+.testi-dot.active{background:var(--cedar);transform:scale(1.2)}
+.testi-content{padding:2rem 0}
+.testi-stars{color:var(--cedar-lt);font-size:1rem;letter-spacing:.2em;margin-bottom:1.8rem}
+.testi-quote{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(1.2rem,1.9vw,1.75rem);line-height:1.7;
+  color:var(--ink);margin-bottom:1.2rem;
+  padding-left:1.5rem;border-left:2px solid var(--stone);
+}
+.testi-attr{
+  font-family:var(--sans);font-size:.78rem;font-weight:400;
+  color:var(--muted);padding-left:1.5rem;margin-bottom:2.8rem;
+}
+
+/* ─── BOOK SECTION ─── */
+.book-section{
+  background:var(--cedar-pale);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:6rem 5rem;
+}
+.book-inner{max-width:1280px;margin:0 auto}
+.book-head{text-align:center;margin-bottom:4rem}
+.book-head .sec-eyebrow{justify-content:center;margin-bottom:1.2rem}
+.book-head .sec-h2{margin-bottom:1rem}
+.book-head .sec-body{max-width:520px;margin:0 auto}
+.book-platforms{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+  margin-bottom:3rem;
+}
+.platform-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:2rem 1.5rem;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:1rem;
+  transition:box-shadow .3s,transform .3s,border-color .3s;
+  cursor:pointer;
+}
+.platform-card:hover{
+  box-shadow:0 8px 32px rgba(0,0,0,.08);
+  transform:translateY(-4px);
+  border-color:var(--cedar-lt);
+}
+.platform-logo{
+  height:36px;display:flex;align-items:center;justify-content:center;
+}
+.platform-logo img{max-height:36px;max-width:120px;object-fit:contain}
+.platform-logo svg{height:36px;width:auto}
+.platform-name{
+  font-family:var(--sans);font-size:.78rem;font-weight:500;
+  letter-spacing:.04em;color:var(--ink);
+}
+.platform-note{
+  font-family:var(--sans);font-size:.72rem;font-weight:300;
+  color:var(--muted);line-height:1.6;
+}
+.platform-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.55rem 1.2rem;
+  border:1.5px solid var(--cedar);
+  color:var(--cedar);
+  font-family:var(--sans);font-size:.65rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  transition:background .25s,color .25s;border-radius:var(--radius);
+  margin-top:auto;
+}
+.platform-card:hover .platform-btn{background:var(--cedar);color:#fff}
+/* Direct WA booking strip */
+.book-wa-strip{
+  background:var(--pine);
+  border-radius:8px;
+  padding:2.2rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.book-wa-left{}
+.book-wa-title{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:1.4rem;color:#fff;margin-bottom:.3rem;
+}
+.book-wa-sub{
+  font-family:var(--sans);font-size:.78rem;font-weight:300;
+  color:rgba(255,255,255,.45);
+}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.85rem 2rem;background:#25d366;
+  font-family:var(--sans);font-size:.72rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  transition:background .3s;border-radius:var(--radius);flex-shrink:0;
+}
+.btn-wa:hover{background:#1da855}
+.btn-wa svg{width:16px;height:16px}
+
+/* ─── ABOUT / LETTER ─── */
+.about-section{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.about-photo{overflow:hidden;min-height:580px}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-body{
+  padding:6rem 5rem;
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--border);
+}
+.about-pull{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(1rem,1.5vw,1.3rem);
+  line-height:1.8;color:var(--body);
+  margin-bottom:2rem;
+  padding-left:1.5rem;
+  border-left:2px solid var(--border);
+}
+
+/* ─── NEWSLETTER ─── */
+.newsletter{
+  background:var(--stone);border-bottom:1px solid var(--border);
+  padding:5rem;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:5rem;
+}
+.nl-eyebrow{
+  font-family:var(--sans);font-size:.65rem;font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--cedar);
+  margin-bottom:.6rem;
+}
+.nl-title{
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:1.7rem;color:var(--ink);
+}
+.nl-form{
+  display:flex;border:1px solid var(--border);background:var(--white);
+  border-radius:var(--radius);overflow:hidden;min-width:360px;
+}
+.nl-input{
+  flex:1;background:none;border:none;outline:none;
+  font-family:var(--sans);font-size:.85rem;font-weight:300;
+  color:var(--ink);padding:.9rem 1.2rem;
+}
+.nl-input::placeholder{color:var(--muted)}
+.nl-btn{
+  background:var(--cedar);border:none;cursor:pointer;
+  padding:.9rem 1.5rem;
+  font-family:var(--sans);font-size:.68rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:#fff;
+  transition:background .3s;flex-shrink:0;
+}
+.nl-btn:hover{background:#6b4620}
+
+/* ─── FOOTER ─── */
+footer{background:var(--pine);color:#fff}
+.footer-body{
+  padding:5rem;
+  display:grid;grid-template-columns:300px 1fr;
+  gap:5rem;align-items:start;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.footer-brand-name{
+  font-family:var(--serif);font-weight:300;font-size:1.2rem;
+  color:#fff;margin-bottom:.3rem;
+}
+.footer-brand-sub{
+  font-family:var(--sans);font-size:.72rem;font-weight:300;
+  color:rgba(255,255,255,.35);letter-spacing:.04em;
+  line-height:1.7;margin-bottom:1.5rem;
+}
+.footer-tagline{
+  font-family:var(--serif);font-style:italic;
+  font-size:.95rem;color:rgba(255,255,255,.45);
+  line-height:1.75;margin-bottom:2rem;
+  padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.07);
+}
+.footer-social{display:flex;gap:.6rem;flex-wrap:wrap}
+.footer-social a{
+  width:34px;height:34px;border:1px solid rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.38);transition:border-color .3s,color .3s;
+  border-radius:50%;
+}
+.footer-social a:hover{border-color:var(--cedar-lt);color:var(--cedar-lt)}
+.footer-social svg{width:14px;height:14px}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem}
+.footer-col-title{
+  font-family:var(--sans);font-size:.62rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--cedar-lt);
+  margin-bottom:1.2rem;display:block;
+}
+.footer-col li{margin-bottom:.6rem}
+.footer-col a{
+  font-family:var(--sans);font-size:.82rem;font-weight:300;
+  color:rgba(255,255,255,.45);transition:color .3s;line-height:1.6;
+}
+.footer-col a:hover{color:#fff}
+.footer-bottom{
+  padding:1.5rem 5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;flex-wrap:wrap;
+}
+.footer-copy{
+  font-family:var(--sans);font-size:.72rem;font-weight:300;
+  color:rgba(255,255,255,.22);
+}
+.footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-legal a{
+  font-family:var(--sans);font-size:.72rem;font-weight:300;
+  color:rgba(255,255,255,.22);transition:color .3s;
+}
+.footer-legal a:hover{color:rgba(255,255,255,.6)}
+.footer-credit{
+  font-family:var(--sans);font-size:.72rem;font-weight:300;
+  color:rgba(255,255,255,.18);
+}
+.footer-credit a{color:rgba(255,255,255,.3);transition:color .3s}
+.footer-credit a:hover{color:rgba(255,255,255,.6)}
+
+/* ─── FLOAT BUTTONS ─── */
+.float-stack{
+  position:fixed;bottom:2rem;right:2rem;z-index:850;
+  display:flex;flex-direction:column;gap:.7rem;align-items:center;
+}
+.wa-float{
+  width:54px;height:54px;border-radius:50%;
+  background:#25d366;box-shadow:0 4px 20px rgba(37,211,102,.35);
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  opacity:0;pointer-events:none;
+  transform:scale(.7) translateY(12px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease),box-shadow .3s;
+}
+.wa-float.visible{opacity:1;pointer-events:auto;transform:scale(1) translateY(0)}
+.wa-float:hover{box-shadow:0 8px 28px rgba(37,211,102,.5)}
+.ig-float{
+  width:54px;height:54px;border-radius:50%;
+  background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);
+  box-shadow:0 4px 20px rgba(214,36,159,.3);
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  opacity:0;pointer-events:none;
+  transform:scale(.7) translateY(12px);
+  transition:opacity .45s var(--ease) .06s,transform .45s var(--ease) .06s,box-shadow .3s;
+}
+.ig-float.visible{opacity:1;pointer-events:auto;transform:scale(1) translateY(0)}
+.ig-float:hover{box-shadow:0 8px 28px rgba(214,36,159,.45)}
+.float-stack svg{width:22px;height:22px}
+
+/* ─── RESPONSIVE 1100px ─── */
+@media(max-width:1100px){
+  .amenities-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+  }
+  .exp-card:first-child{grid-row:span 1}
+  .exp-card{min-height:240px}
+  .book-platforms{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ─── RESPONSIVE TABLET 1024px ─── */
+@media(max-width:1024px){
+  .intro{grid-template-columns:1fr;gap:3rem;padding:5rem 3.5rem}
+  .intro-right{height:420px}
+  .intro-img-tall{grid-row:span 1;height:420px}
+  .cabins-head{grid-template-columns:1fr;gap:2rem}
+  .places .place-row{grid-template-columns:1fr;min-height:auto}
+  .places .place-row:nth-child(even){direction:ltr}
+  .places .place-row:nth-child(even)>*{direction:ltr}
+  .place-photo{min-height:300px}
+  .place-photo img{min-height:300px}
+  .testi-grid{grid-template-columns:1fr;gap:3rem}
+  .about-section{grid-template-columns:1fr}
+  .about-photo{min-height:420px}
+  .about-body{border-left:none;border-top:1px solid var(--border)}
+  .newsletter{grid-template-columns:1fr;gap:2rem}
+  .footer-body{grid-template-columns:1fr;gap:3rem;padding:4rem 3rem}
+  .footer-bottom{padding-left:3rem;padding-right:3rem}
+}
+
+/* ─── RESPONSIVE MOBILE 768px ─── */
+@media(max-width:768px){
+  /* Nav */
+  #nav{padding:0 1.2rem;height:64px}
+  #nav.scrolled{height:56px}
+  .nav-links,.nav-book-btn{display:none}
+  .burger{display:flex}
+  /* Hero */
+  .hero-content{padding:0 1.5rem 4.5rem;text-align:center}
+  .hero-label{justify-content:center}
+  .hero-h1{font-size:clamp(2.2rem,8vw,3rem)}
+  .hero-actions{justify-content:center}
+  .hero-scroll,.hero-stats{display:none}
+  /* Ticker */
+  .ticker-item{font-size:.6rem}
+  /* Intro */
+  .intro{padding:4rem 1.4rem;gap:2.5rem}
+  .intro-right{grid-template-columns:1fr;height:280px}
+  .intro-img-tall{grid-row:span 1;height:280px}
+  .intro-img-sq{display:none}
+  .stat-row{flex-direction:column;gap:1.2rem}
+  .stat-item:not(:last-child){border-right:none;border-bottom:1px solid var(--border);margin-right:0;padding-bottom:1.2rem}
+  /* Amenities */
+  .amenities{padding:4rem 1.4rem}
+  .amenities-head{flex-direction:column;align-items:flex-start;gap:1rem}
+  .amenities-sub-text{text-align:left;max-width:100%}
+  .amenities-grid{grid-template-columns:1fr 1fr}
+  .amenity{align-items:center;text-align:center}
+  /* Cabins */
+  .cabins{padding:4rem 1.4rem}
+  .cabins-inner{max-width:100%}
+  .cabins-head{padding:0;gap:1.5rem}
+  .cabins-grid{grid-template-columns:1fr;gap:1rem}
+  .cabin-card img{height:320px}
+  /* Experiences */
+  .experiences{padding:4rem 1.4rem}
+  .experiences-top{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .exp-grid{
+    display:block;
+  }
+  .exp-card{display:none;min-height:300px;border-radius:4px;overflow:hidden}
+  .exp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .exp-card.active{display:block;position:relative}
+  .exp-nav{display:flex}
+  /* Places */
+  .places{padding:4rem 1.4rem}
+  .places-head{flex-direction:column;align-items:flex-start;gap:1rem}
+  .places-sub-txt{text-align:left;max-width:100%}
+  .place-row{grid-template-columns:1fr;min-height:auto}
+  .place-row:nth-child(even){direction:ltr}
+  .place-row:nth-child(even)>*{direction:ltr}
+  .place-photo{min-height:240px}
+  .place-photo img{min-height:240px}
+  .place-body{padding:2.5rem 1.4rem}
+  .place-desc{max-width:100%}
+  .place-num{font-size:6rem}
+  /* Testimonial */
+  .testimonial{padding:4rem 1.4rem}
+  .testi-grid{gap:2rem}
+  .testi-photo-grid{
+    height:280px;
+    display:block;position:relative;
+    border-radius:4px;overflow:hidden;
+  }
+  .testi-photo-main,.testi-photo-sm{
+    position:absolute;inset:0;border-radius:0;
+    width:100%;height:100%;
+    opacity:0;transition:opacity .6s ease;
+  }
+  .testi-photo-main img,.testi-photo-sm img{
+    width:100%;height:100%;object-fit:cover;
+  }
+  .testi-photo-main.active,.testi-photo-sm.active{opacity:1}
+  .testi-dots{display:flex}
+  /* Book section */
+  .book-section{padding:4rem 1.4rem}
+  .book-platforms{grid-template-columns:1fr 1fr;gap:1rem}
+  .book-wa-strip{flex-direction:column;text-align:center;padding:2rem 1.4rem}
+  .btn-wa{width:100%;justify-content:center}
+  /* About */
+  .about-body{padding:3.5rem 1.4rem}
+  /* Newsletter */
+  .newsletter{padding:4rem 1.4rem;gap:2rem}
+  .nl-form{flex-direction:column;min-width:0}
+  .nl-btn{padding:1rem;text-align:center}
+  /* Footer */
+  .footer-body{padding:3rem 1.4rem;gap:2.5rem}
+  .footer-cols{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-col:last-child{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem}
+  .footer-bottom{padding:1.3rem 1.4rem;flex-direction:column;align-items:center;text-align:center;gap:.8rem}
+  .footer-legal{justify-content:center}
+  /* Float */
+  .float-stack{bottom:1.2rem;right:1.2rem;gap:.55rem}
+  .wa-float,.ig-float{width:48px;height:48px}
+  .float-stack svg{width:20px;height:20px}
+}
+
+@media(max-width:480px){
+  .amenities-grid{grid-template-columns:1fr}
+  .book-platforms{grid-template-columns:1fr}
+  .footer-cols{grid-template-columns:1fr}
+  .footer-col:last-child{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOAT BUTTONS -->
+<div class="float-stack">
+  <a class="wa-float" id="waFloat" href="https://wa.me/919876543210?text=Hello%2C%20I%27d%20like%20to%20book%20a%20stay%20at%20Himalayan%20Cedar%20Nest." target="_blank" rel="noopener" aria-label="Book via WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <a class="ig-float" id="igFloat" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Follow on Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <svg class="logo-mark" viewBox="0 0 32 38" fill="none">
+      <path d="M16 2L2 16v20h8V25h12v13h8V16L16 2z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" fill="none"/>
+      <path d="M9 24 Q16 14 23 24" stroke="currentColor" stroke-width=".9" fill="none"/>
+      <path d="M6 20 Q16 9 26 20" stroke="currentColor" stroke-width=".9" fill="none"/>
+      <path d="M16 2v8" stroke="currentColor" stroke-width="1.1"/>
+    </svg>
+    <div class="logo-text">
+      <span class="logo-name">Himalayan Cedar Nest</span>
+      <span class="logo-sub">Sainj Valley · Himachal Pradesh</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Story</a></li>
+    <li><a href="#cabins">Cabins</a></li>
+    <li><a href="#experiences">Experiences</a></li>
+    <li><a href="#places">Explore</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <a class="nav-book-btn" href="https://wa.me/919876543210?text=Hello%2C%20I%27d%20like%20to%20book." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Reserve
+  </a>
+  <button class="burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- DRAWER -->
+<div class="drawer" id="navDrawer" aria-hidden="true">
+  <nav>
+    <a href="#about">Story</a>
+    <a href="#cabins">Cabins</a>
+    <a href="#experiences">Experiences</a>
+    <a href="#places">Explore Sainj</a>
+    <a href="#book">Book a Stay</a>
+  </nav>
+  <a class="drawer-cta" href="https://wa.me/919876543210?text=Hello%2C%20I%27d%20like%20to%20book." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Book via WhatsApp
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="drone.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-stats">
+    <div class="hero-stat-pod">
+      <span class="hero-stat-num">3</span>
+      <span class="hero-stat-lbl">Curated Cabins</span>
+    </div>
+    <div class="hero-stat-pod">
+      <span class="hero-stat-num">4★</span>
+      <span class="hero-stat-lbl">Guest Rating</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">
+      <span class="hero-label-line"></span>
+      <span class="hero-label-text">Deohari Village · Sainj Valley · Himachal Pradesh</span>
+    </div>
+    <h1 class="hero-h1">Where the valley<br>breathes slowly.</h1>
+    <p class="hero-sub">Handcrafted deodar cedar cabins in the heart of Sainj Valley — Himachal's best-kept secret.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#book">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reserve a Cabin
+      </a>
+      <a class="btn-outline" href="#cabins">View Cabins</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-track"></div>
+    <span class="hero-scroll-lbl">Scroll</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Deohari Village, Sainj Valley<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Deodar Cedar Cabins<span class="ticker-sep"></span></span>
+    <span class="ticker-item">UNESCO World Heritage Buffer Zone<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Free WiFi &amp; Parking<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Pets Welcome<span class="ticker-sep"></span></span>
+    <span class="ticker-item">41 km from Kullu-Manali Airport<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Farm-to-Table Breakfast<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Himalayan Wildlife Sanctuary<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Deohari Village, Sainj Valley<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Deodar Cedar Cabins<span class="ticker-sep"></span></span>
+    <span class="ticker-item">UNESCO World Heritage Buffer Zone<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Free WiFi &amp; Parking<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Pets Welcome<span class="ticker-sep"></span></span>
+    <span class="ticker-item">41 km from Kullu-Manali Airport<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Farm-to-Table Breakfast<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Himalayan Wildlife Sanctuary<span class="ticker-sep"></span></span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro" id="about">
+  <div class="intro-left reveal">
+    <div class="intro-eyebrow"><span>Welcome to Cedar Nest</span></div>
+    <h2 class="intro-heading">A sanctuary among<br>ancient cedars of<br>Sainj Valley.</h2>
+    <p class="intro-body" style="margin-bottom:1.5rem">Nestled in Deohari Village among ancient deodar cedars, Himalayan Cedar Nest is a collection of three handcrafted wooden cabins with panoramic views of the Great Himalayan National Park. Where mountain hospitality meets the art of beautiful stillness.</p>
+    <p class="intro-body">500m from Deohari Bus Stand · 41 km from Kullu-Manali Airport · Adjacent to the UNESCO World Heritage Sanctuary.</p>
+    <div class="stat-row reveal d1">
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-lbl">Cedar Cabins</div></div>
+      <div class="stat-item"><div class="stat-num">4★</div><div class="stat-lbl">Guest Rating</div></div>
+      <div class="stat-item"><div class="stat-num">41km</div><div class="stat-lbl">from Airport</div></div>
+    </div>
+  </div>
+  <div class="intro-right reveal d1">
+    <div class="intro-img-tall"><img src="drone_shot_higher.webp" alt="Cedar Nest from above" loading="lazy"/></div>
+    <div class="intro-img-sq"><img src="nature_view_outside.webp" alt="Sainj Valley view" loading="lazy"/></div>
+    <div class="intro-img-sq"><img src="food.jpg" alt="Himalayan breakfast" loading="lazy"/></div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<div class="amenities" id="amenities">
+  <div class="amenities-inner">
+    <div class="amenities-head reveal">
+      <div>
+        <div class="sec-eyebrow"><span>What's Included</span></div>
+        <h2 class="sec-h2">Everything you need,<br><em>nothing you don't.</em></h2>
+      </div>
+      <p class="amenities-sub-text">From free WiFi and private parking to farm-fresh breakfasts and an outdoor fireplace under Himalayan stars. All included.</p>
+    </div>
+    <div class="amenities-grid reveal d1">
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg></div>
+        <p class="amenity-name">Free WiFi</p>
+        <p class="amenity-note">High-speed WiFi throughout the property.</p>
+      </div>
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 4v4h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg></div>
+        <p class="amenity-name">Free Parking</p>
+        <p class="amenity-note">Private on-site parking at no charge.</p>
+      </div>
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <p class="amenity-name">Breakfast Included</p>
+        <p class="amenity-note">Farm-to-table local breakfast each morning.</p>
+      </div>
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+        <p class="amenity-name">Room Service</p>
+        <p class="amenity-note">Meals delivered to your cabin.</p>
+      </div>
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="11" cy="4" r="2"/><path d="M5 21v-7m14 7v-7m-7-5v12"/><path d="M5 10c0-3 3-5 6-5s6 2 6 5"/></svg></div>
+        <p class="amenity-name">Pets Welcome</p>
+        <p class="amenity-note">Bring your furry friends at no extra charge.</p>
+      </div>
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 2a5 5 0 015 5c0 5-5 10-5 10S7 12 7 7a5 5 0 015-5z"/></svg></div>
+        <p class="amenity-name">Outdoor Fireplace</p>
+        <p class="amenity-note">Gather under Himalayan stars by the fire.</p>
+      </div>
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="amenity-name">Private Bathrooms</p>
+        <p class="amenity-note">En-suite private bathrooms in every cabin.</p>
+      </div>
+      <div class="amenity">
+        <div class="amenity-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 17l4-8 4 5 3-3 4 6"/><circle cx="8" cy="8" r="2"/></svg></div>
+        <p class="amenity-name">Mountain Views</p>
+        <p class="amenity-note">Panoramic views of the Great Himalayan Park.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CABINS -->
+<section class="cabins" id="cabins">
+  <div class="cabins-inner">
+    <div class="cabins-head">
+      <div class="reveal">
+        <div class="sec-eyebrow"><span>Our Cabins</span></div>
+        <h2 class="sec-h2">Three cabins,<br><em>one nature.</em></h2>
+      </div>
+      <div class="cabins-head-right reveal d1">
+        <p class="sec-body">Each handcrafted deodar cabin holds a distinct character — warm wooden interiors, private balconies, and mountain or garden views. Daily housekeeping included.</p>
+        <a href="https://wa.me/919876543210?text=I%27d%20like%20to%20enquire%20about%20cabin%20availability." target="_blank" rel="noopener" class="link-arrow" style="margin-top:.5rem">Check availability</a>
+      </div>
+    </div>
+    <div class="cabins-grid">
+      <div class="cabin-card reveal">
+        <img src="room-exterior2.jpg" alt="The Cedar Cottage" loading="lazy"/>
+        <div class="cabin-info">
+          <div class="cabin-num">01</div>
+          <p class="cabin-cat">Cottage</p>
+          <h3 class="cabin-name">The Cedar Cottage</h3>
+          <a href="https://wa.me/919876543210?text=I%27d%20like%20to%20book%20The%20Cedar%20Cottage." target="_blank" rel="noopener" class="cabin-cta">Book this cabin</a>
+        </div>
+      </div>
+      <div class="cabin-card reveal d1">
+        <img src="room1.webp" alt="The Valley Suite" loading="lazy"/>
+        <div class="cabin-info">
+          <div class="cabin-num">02</div>
+          <p class="cabin-cat">Suite</p>
+          <h3 class="cabin-name">The Valley Suite</h3>
+          <a href="https://wa.me/919876543210?text=I%27d%20like%20to%20book%20The%20Valley%20Suite." target="_blank" rel="noopener" class="cabin-cta">Book this cabin</a>
+        </div>
+      </div>
+      <div class="cabin-card reveal d2">
+        <img src="room-interior.jpg" alt="The Forest Loft" loading="lazy"/>
+        <div class="cabin-info">
+          <div class="cabin-num">03</div>
+          <p class="cabin-cat">Loft</p>
+          <h3 class="cabin-name">The Forest Loft</h3>
+          <a href="https://wa.me/919876543210?text=I%27d%20like%20to%20book%20The%20Forest%20Loft." target="_blank" rel="noopener" class="cabin-cta">Book this cabin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experiences" id="experiences">
+  <div class="experiences-inner">
+    <div class="experiences-top reveal">
+      <div>
+        <div class="sec-eyebrow"><span>Experiences</span></div>
+        <h2 class="sec-h2">Life at <em>Cedar Nest.</em></h2>
+      </div>
+      <p class="sec-body" style="max-width:380px">From cedar forest trails and alpine treks to stargazing and farm-fresh Himalayan feasts — every day here opens the valley's living soul.</p>
+    </div>
+    <div class="exp-grid reveal d1">
+      <div class="exp-card active"><img src="nature_view_from_inside_room.webp" alt="Cedar Forest Trails"/><div class="exp-scrim"><span class="exp-cat">Wellness</span><h3 class="exp-title">Cedar Forest Trails<br>&amp; Forest Bathing</h3><p class="exp-arr">Explore →</p></div></div>
+      <div class="exp-card"><img src="nature_view_outside.webp" alt="Alpine Meadow Treks" loading="lazy"/><div class="exp-scrim"><span class="exp-cat">Adventure</span><h3 class="exp-title-sm">Alpine Meadow Treks</h3><p class="exp-arr">Explore →</p></div></div>
+      <div class="exp-card"><img src="night_view_exterior.webp" alt="Himalayan Stargazing" loading="lazy"/><div class="exp-scrim"><span class="exp-cat">Evenings</span><h3 class="exp-title-sm">Himalayan Stargazing</h3><p class="exp-arr">Explore →</p></div></div>
+      <div class="exp-card"><img src="room-exterior1.jpg" alt="Village Heritage Walks" loading="lazy"/><div class="exp-scrim"><span class="exp-cat">Culture</span><h3 class="exp-title-sm">Village Heritage Walks</h3><p class="exp-arr">Explore →</p></div></div>
+      <div class="exp-card"><img src="food.jpg" alt="The Himalayan Table" loading="lazy"/><div class="exp-scrim"><span class="exp-cat">Dining</span><h3 class="exp-title-sm">The Himalayan Table</h3><p class="exp-arr">Explore →</p></div></div>
+    </div>
+    <div class="exp-nav" id="expNav">
+      <button class="exp-nav-btn" id="expPrev">&#8592;</button>
+      <span class="exp-counter" id="expCounter">1 / 5</span>
+      <button class="exp-nav-btn" id="expNext">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- PLACES -->
+<section class="places" id="places">
+  <div class="places-inner">
+    <div class="places-head reveal">
+      <div>
+        <div class="sec-eyebrow lt"><span>Around Cedar Nest</span></div>
+        <h2 class="sec-h2 lt">Places to visit<br>in <em>Sainj Valley</em></h2>
+      </div>
+      <p class="places-sub-txt">Sainj is Himachal's best-kept secret. Cedar Nest puts you at its heart — minutes from ancient meadows, hidden waterfalls and a UNESCO sanctuary.</p>
+    </div>
+    <div class="places-list">
+      <div class="place-row reveal">
+        <div class="place-photo"><img src="Shangarh_Meadow.webp" alt="Shangarh Meadow" loading="lazy"/><span class="place-num">01</span></div>
+        <div class="place-body">
+          <p class="place-tag">Sacred Meadow · 2200m</p>
+          <h3 class="place-name">Shangarh<br><em>Meadow</em></h3>
+          <p class="place-desc">One of the most breathtaking alpine meadows in Himachal, surrounded by towering deodar cedars with a centuries-old wooden temple at its heart. Guests wake early for sunrise here, when mist clings to the cedars and the Great Himalayan National Park ridge rises dramatically behind.</p>
+          <p class="place-dist">○ 12 km from Cedar Nest · 35 min drive</p>
+        </div>
+      </div>
+      <div class="place-row reveal">
+        <div class="place-photo"><img src="Rupi_Raila_Waterfall.png" alt="Rupi Raila Waterfall" loading="lazy"/><span class="place-num">02</span></div>
+        <div class="place-body">
+          <p class="place-tag">Hidden Cascade</p>
+          <h3 class="place-name">Rupi Raila<br><em>Waterfall</em></h3>
+          <p class="place-desc">Hidden deep in a mossy gorge carved by millennia of glacial melt, Rupi Raila is the waterfall locals rarely share with outsiders. The walk through forest and boulder-strewn stream beds is itself a meditation. Cedar Nest's guides know the trail intimately.</p>
+          <p class="place-dist">○ 8 km · 25 min drive + 45 min trek</p>
+        </div>
+      </div>
+      <div class="place-row reveal">
+        <div class="place-photo"><img src="Sainj_wildlife_sanctuary.png" alt="Sainj Wildlife Sanctuary" loading="lazy"/><span class="place-num">03</span></div>
+        <div class="place-body">
+          <p class="place-tag">UNESCO World Heritage Buffer Zone</p>
+          <h3 class="place-name">Sainj Wildlife<br><em>Sanctuary</em></h3>
+          <p class="place-desc">Home to the Himalayan tahr, snow leopard, brown bear, and over 220 bird species. Enter on foot directly from the Cedar Nest property — the wilderness begins at your doorstep.</p>
+          <p class="place-dist">○ Adjacent to Cedar Nest · Enter on foot</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <div class="testi-grid">
+      <div>
+        <div class="testi-photo-grid" id="testiPhotoGrid">
+          <div class="testi-photo-main active" data-index="0"><img src="drone_shot_higher.webp" alt="Cedar Nest aerial view"/></div>
+          <div class="testi-photo-sm" data-index="1"><img src="night_view_exterior.webp" alt="Cedar Nest at night" loading="lazy"/></div>
+          <div class="testi-photo-sm" data-index="2"><img src="drone_view_exterior_hero.jpg" alt="Cedar Nest exterior" loading="lazy"/></div>
+        </div>
+        <div class="testi-dots" id="testiDots">
+          <button class="testi-dot active" data-index="0"></button>
+          <button class="testi-dot" data-index="1"></button>
+          <button class="testi-dot" data-index="2"></button>
+        </div>
+      </div>
+      <div class="testi-content reveal d1">
+        <div class="sec-eyebrow"><span>Voices from the Valley</span></div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I've lived in this valley my whole life and I'm out on the trails pretty much every day. But I never get tired of looking at the mountains."</p>
+        <p class="testi-attr">— Ramesh, the Valley Guide</p>
+        <a href="https://wa.me/919876543210?text=Hello%2C%20I%27d%20like%20to%20book." target="_blank" rel="noopener" class="link-arrow">Begin your own story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK SECTION -->
+<section class="book-section" id="book">
+  <div class="book-inner">
+    <div class="book-head reveal">
+      <div class="sec-eyebrow"><span>Reserve Your Stay</span></div>
+      <h2 class="sec-h2">Book on your <em>favourite platform.</em></h2>
+      <p class="sec-body" style="margin-top:.8rem">Find us on leading travel platforms, or reach our team directly on WhatsApp for the fastest response and personalised help.</p>
+    </div>
+    <div class="book-platforms reveal d1">
+      <!-- Airbnb -->
+      <a class="platform-card" href="https://www.airbnb.co.in/rooms/853189955208971108?source_impression_id=p3_1781439423_P3-qI85ehBtyICg4" target="_blank" rel="noopener">
+        <div class="platform-logo">
+          <svg viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="100" height="30">
+            <path d="M17.9 7c-5.8 0-10.5 4.7-10.5 10.5S12.1 28 17.9 28s10.5-4.7 10.5-10.5S23.7 7 17.9 7zm0 18.5c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" fill="#FF5A5F"/>
+            <path d="M17.9 11.8c-3.2 0-5.7 2.6-5.7 5.7s2.6 5.7 5.7 5.7 5.7-2.6 5.7-5.7-2.5-5.7-5.7-5.7zm0 9c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2 3.2 1.4 3.2 3.2-1.4 3.2-3.2 3.2z" fill="#FF5A5F"/>
+            <text x="32" y="23" font-family="Circular, sans-serif" font-size="14" font-weight="600" fill="#FF5A5F">airbnb</text>
+          </svg>
+        </div>
+        <p class="platform-name">Airbnb</p>
+        <p class="platform-note">Flexible stays, guest reviews &amp; secure booking.</p>
+        <span class="platform-btn">Book on Airbnb →</span>
+      </a>
+      <!-- Booking.com -->
+      <a class="platform-card" href="https://www.booking.com/hotel/in/himalayan-cedar-nest.html" target="_blank" rel="noopener">
+        <div class="platform-logo">
+          <svg viewBox="0 0 130 36" xmlns="http://www.w3.org/2000/svg" width="115" height="30">
+            <rect x="2" y="6" width="24" height="24" rx="4" fill="#003580"/>
+            <text x="6" y="24" font-family="Arial" font-size="18" font-weight="900" fill="#fff">b.</text>
+            <text x="32" y="25" font-family="Arial" font-size="15" font-weight="700" fill="#003580">Booking.com</text>
+          </svg>
+        </div>
+        <p class="platform-name">Booking.com</p>
+        <p class="platform-note">Instant confirmation, free cancellation options.</p>
+        <span class="platform-btn">Book on Booking →</span>
+      </a>
+      <!-- MakeMyTrip -->
+      <a class="platform-card" href="https://www.makemytrip.com/hotels/himalayan_cedar_nest-details-sainj.html" target="_blank" rel="noopener">
+        <div class="platform-logo">
+          <svg viewBox="0 0 130 36" xmlns="http://www.w3.org/2000/svg" width="115" height="30">
+            <circle cx="18" cy="18" r="14" fill="#e8334a"/>
+            <text x="8" y="23" font-family="Arial" font-size="13" font-weight="900" fill="#fff">MMT</text>
+            <text x="38" y="25" font-family="Arial" font-size="13" font-weight="700" fill="#e8334a">MakeMyTrip</text>
+          </svg>
+        </div>
+        <p class="platform-name">MakeMyTrip</p>
+        <p class="platform-note">Best for Indian travellers, EMI options available.</p>
+        <span class="platform-btn">Book on MMT →</span>
+      </a>
+      <!-- TripAdvisor -->
+      <a class="platform-card" href="https://www.tripadvisor.in/Hotel_Review-g15339198-d27142333-Reviews-Himalayan_Cedar_Nest-Sainj_Kullu_District_Himachal_Pradesh.html" target="_blank" rel="noopener">
+        <div class="platform-logo">
+          <svg viewBox="0 0 130 36" xmlns="http://www.w3.org/2000/svg" width="115" height="30">
+            <circle cx="10" cy="18" r="8" fill="#00AA6C"/>
+            <circle cx="10" cy="18" r="3.5" fill="#fff"/>
+            <circle cx="28" cy="18" r="8" fill="#00AA6C"/>
+            <circle cx="28" cy="18" r="3.5" fill="#fff"/>
+            <text x="42" y="23" font-family="Arial" font-size="12" font-weight="700" fill="#00AA6C">TripAdvisor</text>
+          </svg>
+        </div>
+        <p class="platform-name">TripAdvisor</p>
+        <p class="platform-note">Read verified reviews from real guests.</p>
+        <span class="platform-btn">View on TripAdvisor →</span>
+      </a>
+    </div>
+    <!-- WhatsApp direct booking -->
+    <div class="book-wa-strip reveal d2">
+      <div class="book-wa-left">
+        <p class="book-wa-title">Prefer to book directly?</p>
+        <p class="book-wa-sub">Message us on WhatsApp — our team responds within the hour, 7 days a week.</p>
+      </div>
+      <a class="btn-wa" href="https://wa.me/919876543210?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20booking%20at%20Himalayan%20Cedar%20Nest." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / LETTER -->
+<section class="about-section">
+  <div class="about-photo reveal">
+    <img src="night-view.jpg" alt="Cedar Nest glowing at night" loading="lazy"/>
+  </div>
+  <div class="about-body reveal d1">
+    <div class="sec-eyebrow"><span>Our Story</span></div>
+    <h2 class="sec-h2" style="margin-bottom:1.5rem">A Love Letter<br>to the <em>Himalayas.</em></h2>
+    <p class="about-pull">"Dear Sainj Valley, we first met you on an October morning some years back. It still feels like yesterday. That morning changed our lives — and yours."</p>
+    <p class="sec-body" style="margin-bottom:1.8rem">This small but heartfelt declaration is the opening of a much longer love story — one that began with a dream, a valley, and a handful of ancient cedar trees. Cedar Nest exists because some places are too beautiful to keep to oneself.</p>
+    <p class="sec-body" style="margin-bottom:2rem">Built with reverence for the landscape of Himachal Pradesh, every cabin is handcrafted from local deodar wood, perfectly placed for day trips to Shangarh Meadow, Rupi Raila Waterfall, and Pundrik Lake.</p>
+    <a href="#book" class="link-arrow">Begin your own story</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="reveal">
+    <p class="nl-eyebrow">Stay connected</p>
+    <p class="nl-title">Seasons, stories &amp; openings.</p>
+  </div>
+  <div class="nl-form reveal d1">
+    <input class="nl-input" type="email" placeholder="Your email address" aria-label="Email"/>
+    <button class="nl-btn" id="nlBtn">Subscribe</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-body">
+    <div class="reveal">
+      <p class="footer-brand-name">Himalayan Cedar Nest</p>
+      <p class="footer-brand-sub">Resort &amp; Retreat · Deohari Village<br>Sainj Valley, Kullu, HP 175134</p>
+      <p class="footer-tagline">Where the Himalayan wilderness<br>becomes your backyard.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://wa.me/919876543210" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-cols reveal d1">
+      <div class="footer-col">
+        <span class="footer-col-title">Explore</span>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#cabins">Rooms &amp; Cabins</a></li>
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#places">Explore Sainj</a></li>
+          <li><a href="#book">Book a Stay</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Cabins</span>
+        <ul>
+          <li><a href="https://wa.me/919876543210?text=Cedar%20Cottage" target="_blank" rel="noopener">The Cedar Cottage</a></li>
+          <li><a href="https://wa.me/919876543210?text=Valley%20Suite" target="_blank" rel="noopener">The Valley Suite</a></li>
+          <li><a href="https://wa.me/919876543210?text=Forest%20Loft" target="_blank" rel="noopener">The Forest Loft</a></li>
+          <li><a href="#">Family Rooms</a></li>
+          <li><a href="#">Seasonal Offers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Contact</span>
+        <ul>
+          <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+          <li><a href="mailto:stay@himalayancdarnest.com">stay@himalayancdarnest.com</a></li>
+          <li><a href="#">Deohari Village, Sainj<br>Kullu, HP 175134</a></li>
+          <li><a href="#">Check-in 2 PM · Out 11 AM</a></li>
+          <li><a href="#">English &amp; Hindi spoken</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Himalayan Cedar Nest · All Rights Reserved</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Stay</a>
+      <a href="#">Cancellation Policy</a>
+    </div>
+    <p class="footer-credit">Designed &amp; Developed by <a href="https://2swan.in" target="_blank" rel="noopener">2Swan</a></p>
+  </div>
+</footer>
+
+<script>
+// ── Nav scroll ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 70);
+}, { passive: true });
+
+// ── Burger ──
+const burger = document.getElementById('navBurger');
+const drawer = document.getElementById('navDrawer');
+function openDrawer() {
+  burger.classList.add('open'); burger.setAttribute('aria-expanded','true');
+  drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  burger.classList.remove('open'); burger.setAttribute('aria-expanded','false');
+  drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+burger.addEventListener('click', () => burger.classList.contains('open') ? closeDrawer() : openDrawer());
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ── Reveal ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// ── Float buttons ──
+const waFloat = document.getElementById('waFloat');
+const igFloat = document.getElementById('igFloat');
+const triggerSection = document.getElementById('amenities');
+const floatObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      waFloat.classList.add('visible');
+      if (igFloat) igFloat.classList.add('visible');
+    } else if (e.boundingClientRect.top > 0) {
+      waFloat.classList.remove('visible');
+      if (igFloat) igFloat.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.1 });
+if (triggerSection) floatObs.observe(triggerSection);
+
+// ── Smooth scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' }); }
+  });
+});
+
+// ── Newsletter ──
+document.getElementById('nlBtn').addEventListener('click', function () {
+  const i = document.querySelector('.nl-input');
+  if (i.value.includes('@')) {
+    this.textContent = 'Subscribed ✓';
+    i.value = '';
+    setTimeout(() => { this.textContent = 'Subscribe'; }, 3000);
+  } else {
+    i.style.borderColor = 'var(--cedar)'; i.focus();
+    setTimeout(() => { i.style.borderColor = ''; }, 1800);
+  }
+});
+
+// ── Experiences mobile carousel ──
+(function () {
+  const isMobile = () => window.innerWidth <= 768;
+  const cards = document.querySelectorAll('.exp-card');
+  const nav = document.getElementById('expNav');
+  const prevBtn = document.getElementById('expPrev');
+  const nextBtn = document.getElementById('expNext');
+  const counter = document.getElementById('expCounter');
+  let cur = 0, timer = null;
+  function show(i) { cards.forEach(c => c.classList.remove('active')); cards[i].classList.add('active'); cur = i; if (counter) counter.textContent = (i+1) + ' / ' + cards.length; }
+  function next() { show((cur + 1) % cards.length); }
+  function prev() { show((cur - 1 + cards.length) % cards.length); }
+  function startAuto() { clearInterval(timer); timer = setInterval(next, 3500); }
+  function init() {
+    if (!isMobile()) { cards.forEach(c => { c.classList.remove('active'); c.style.display = ''; }); if (nav) nav.style.display = 'none'; clearInterval(timer); return; }
+    if (nav) nav.style.display = 'flex';
+    show(cur); startAuto();
+  }
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
+  init(); window.addEventListener('resize', init);
+})();
+
+// ── Testimonial photo carousel (mobile) ──
+(function () {
+  const isMobile = () => window.innerWidth <= 768;
+  const photos = document.querySelectorAll('#testiPhotoGrid [data-index]');
+  const dots = document.querySelectorAll('#testiDots .testi-dot');
+  const dotsWrap = document.getElementById('testiDots');
+  let cur = 0, timer = null;
+  function show(i) { photos.forEach(p => p.classList.remove('active')); dots.forEach(d => d.classList.remove('active')); photos[i].classList.add('active'); dots[i].classList.add('active'); cur = i; }
+  function next() { show((cur + 1) % photos.length); }
+  function startAuto() { clearInterval(timer); timer = setInterval(next, 3200); }
+  function init() {
+    if (!isMobile()) { photos.forEach(p => { p.classList.remove('active'); p.style.opacity=''; p.style.position=''; }); if (dotsWrap) dotsWrap.style.display = 'none'; clearInterval(timer); return; }
+    if (dotsWrap) dotsWrap.style.display = 'flex';
+    show(cur); startAuto();
+  }
+  dots.forEach(d => d.addEventListener('click', () => { show(parseInt(d.dataset.index)); startAuto(); }));
+  init(); window.addEventListener('resize', init);
+})();
+</script>
+</body>
+</html>

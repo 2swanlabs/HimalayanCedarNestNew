@@ -854,6 +854,9 @@ footer{background:var(--pine);color:#fff}
   .newsletter{grid-template-columns:1fr;gap:2rem}
   .footer-body{grid-template-columns:1fr;gap:3rem;padding:4rem 3rem}
   .footer-bottom{padding-left:3rem;padding-right:3rem}
+  /* Keep stat-row horizontal on tablet */
+  .stat-row{flex-direction:row}
+  .stat-item:not(:last-child){border-right:1px solid var(--border);border-bottom:none;margin-right:2rem;padding-bottom:0}
 }
 
 /* ─── RESPONSIVE MOBILE 768px ─── */
@@ -876,8 +879,11 @@ footer{background:var(--pine);color:#fff}
   .intro-right{grid-template-columns:1fr;height:280px}
   .intro-img-tall{grid-row:span 1;height:280px}
   .intro-img-sq{display:none}
-  .stat-row{flex-direction:column;gap:1.2rem}
-  .stat-item:not(:last-child){border-right:none;border-bottom:1px solid var(--border);margin-right:0;padding-bottom:1.2rem}
+  .stat-row{flex-direction:row;gap:0;flex-wrap:nowrap}
+  .stat-item{flex:1;padding-right:1rem;min-width:0}
+  .stat-item:not(:last-child){border-right:1px solid var(--border);border-bottom:none;margin-right:1rem;padding-bottom:0}
+  .stat-num{font-size:1.6rem}
+  .stat-lbl{font-size:.58rem}
   /* Amenities */
   .amenities{padding:4rem 1.4rem}
   .amenities-head{flex-direction:column;align-items:flex-start;gap:1rem}
@@ -1022,20 +1028,11 @@ footer{background:var(--pine);color:#fff}
 <section class="hero" id="hero">
   <div class="hero-video">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="Drone.mp4" type="video/mp4">
+      <source src="drone.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-scrim"></div>
-  <div class="hero-stats">
-    <div class="hero-stat-pod">
-      <span class="hero-stat-num">3</span>
-      <span class="hero-stat-lbl">Curated Cabins</span>
-    </div>
-    <div class="hero-stat-pod">
-      <span class="hero-stat-num">4★</span>
-      <span class="hero-stat-lbl">Guest Rating</span>
-    </div>
-  </div>
+
   <div class="hero-content">
     <div class="hero-label">
       <span class="hero-label-line"></span>

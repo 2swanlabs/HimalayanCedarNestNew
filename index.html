@@ -1,102 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Demo Access Token Expired</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "warm-gold": "#C5A059",
-          "surface": "#f9f9f7",
-          "primary": "#000000",
-          "on-surface": "#1a1c1b",
-          "on-surface-variant": "#474741",
-          "outline-variant": "#c8c7be",
-          "outline": "#787770",
-          "border-subtle": "#E5E5E3",
-          "secondary": "#775a19",
-        },
-        fontFamily: {
-          display: ["Playfair Display", "serif"],
-          body: ["Inter", "sans-serif"],
-        },
-        animation: { "fade-up": "fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards" },
-        keyframes: {
-          fadeUp: {
-            "0%":   { opacity: "0", transform: "translateY(20px)" },
-            "100%": { opacity: "1", transform: "translateY(0)" },
-          }
-        }
-      },
-    },
-  }
-</script>
-<style>
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
-
-  /* ── Background: hidden scrollable container ── */
-  #bg-scroll {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  #bg-scroll::-webkit-scrollbar { display: none; }
-
-  /* The actual background image div — height set by JS after image loads */
-  #bg-image {
-    width: 100%;
-    background-image: url('background.png');
-    background-size: 100% auto;   /* full width, natural height */
-    background-position: top center;
-    background-repeat: no-repeat;
-    filter: blur(4.5px) brightness(0.85);
-  }
-
-  /* ── Card wrapper: locked to viewport ── */
-  #card-wrapper {
-    position: relative;
-    z-index: 1;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-  }
-  #card-wrapper > * { pointer-events: auto; }
-
-  /* ── Glass card ── */
-  .glass-card {
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow:
-      0 4px 6px -1px rgba(0,0,0,0.07),
-      0 10px 15px -3px rgba(0,0,0,0.05),
-      0 20px 25px -5px rgba(0,0,0,0.03);
-  }
-
-
-
-  /* Fade image into curve */
-  .hero-image-fit {
-    mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
-  }
-</style>
+<link href="styles.css" rel="stylesheet"/>
 </head>
 <body class="font-body antialiased text-on-surface">
 
